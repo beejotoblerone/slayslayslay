@@ -1,58 +1,27 @@
 
 ---
-const { cols = 4, gap = '1rem' } = Astro.props;
-import Link from "./Link.astro";
 
-// Each link may optionally include a `pos` object to place it in the grid:
-// pos: { col: 1-based column, row: 1-based row, colSpan: 1, rowSpan: 1 }
-const links = [
-    { title: "Portfolio", url: "https://beejoa35.myportfolio.com/", img: "/src/assets/images/dollbottom.png", pos: { col: 1, row: 1 } },
-    { title: "Resume", url: "https://beejoa35.myportfolio.dev", img: "/src/assets/images/dolltop.png", pos: { col: 2, row: 1 } },
-    { title: "LinkedIn", url: "https://linkedin.com/", img: "/src/assets/images/card.png", pos: { col: 1, row: 2 } },
-    { title: "Behance", url: "https://behance.net/", img: "/src/assets/images/yohand.png", pos: { col: 2, row: 2 } }
-];
+import DollLink from "./DollLink.astro";
+
+
+
 
 ---
 
-<div class="link-grid" style={`--cols:${cols}; --gap:${gap}`}>
-    {links.map((link, i) => {
-        const p = link.pos || ({} as any);
-        const col = p.col;
-        const row = p.row;
-        const colSpan = p['colSpan'] || 1;
-        const rowSpan = p['rowSpan'] || 1;
-        const gridStyle = `${col ? `grid-column: ${col} / span ${colSpan};` : ''}${row ? `grid-row: ${row} / span ${rowSpan};` : ''}`;
-        return (
-            <div class="grid-item" style={gridStyle}>
-                <Link data={link} />
-            </div>
-        );
-    })}
+<!-- 
+<DollLink />
+<CardLink />
+<YohandLink />
+
+
+-->
+
+<div class="link-grid">
+<DollLink />
 </div>
 
 <style>
-    .link-grid {
-        display: grid;
-        grid-template-columns: repeat(var(--cols), 1fr);
-        gap: var(--gap);
-        width: 100%;
-        align-items: start;
-    }
 
-    .grid-item {
-        /* allow the link to size itself inside the cell */
-        display: block;
-        align-self: start;
-    }
-
-    /* when the grid is used, make icons smaller */
-   
-
-    @media (max-width: 700px) {
-        .link-grid {
-            grid-template-columns: 1fr;
-        }
-    }
 </style>
 
 

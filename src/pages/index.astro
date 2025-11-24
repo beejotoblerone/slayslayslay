@@ -15,7 +15,7 @@ import Text from "@components/text.astro";
       <Container>
         <img class="scaled-image" src="/src/assets/images/butt.png" alt="buttons" width="120" />
         <Text/>
-        <img src="/src/assets/images/jojo.png" alt="Ava-Jo Barone" />
+        <img src="/src/assets/images/jojo.png" class="mynamepic" alt="Ava-Jo Barone" />
       </Container>
       
       <aside class="side-column">
@@ -23,3 +23,17 @@ import Text from "@components/text.astro";
       </aside>
     </div>
 </Layout>
+
+
+<style>
+
+  .mynamepic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0rem 1rem 0 6rem;
+    gap: 0.5rem;
+  }
+
+
+</style>

@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import DollBottom from '../assets/images/dollbottom.png';
+import DollTop from '../assets/images/dolltop.png';
+---
+
+<a href="https://somesite.com">
+    <Image class={"doll-top"} src={DollTop} alt="Doll Top" width="200" />
+    <Image class={"doll-bottom"} src={DollBottom} alt="Doll Bottom" width="200"
+</a>
+
+<style>
+    a{
+        position:absolute;
+        right:250px;
+        top:300px;
+        
+    }
+
+    .doll-top{
+                transition: transform 0.3s ease;
+
+    }
+
+    a:hover .doll-top {
+        transform: translateY(-10px);
+    }
+
+
+</style>
