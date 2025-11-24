@@ -7,7 +7,7 @@ import "@fontsource/karla";
 <style is:global>
   /* We can use this style tag to set up colors, fonts, etc. */
   :root {
-    --color-background: rgb(24, 0, 24);
+    --color-background: rgb(53, 8, 8);
     --color-text: rgb(240, 240, 240);
     --color-accent: rgb(0, 200, 255);
     --color-focus-ring: rgb(255, 0, 255);
@@ -35,6 +35,19 @@ import "@fontsource/karla";
   h5,
   h6 {
     color: var(--color-accent);
+  }
+
+  /* Massive hello title used by components */
+  .massive-hello {
+    font-family: var(--font-headings);
+    font-size: clamp(56px, 14vw, 220px);
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin: 0.25rem 0 1rem 0;
+    color: var(--color-accent);
+    text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    text-align: center;
   }
 
   /* default focus ring styles */

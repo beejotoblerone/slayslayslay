@@ -2,6 +2,13 @@
 import Link from "./Link.astro";
 
 const links = [
-    {title:"Link 1", url:}
+    {title:"Portfolio", url:"https://beejoa35.myportfolio.com/"},
+    {title:"Resume", url:"https://kristofflalicki.dev"},
+    {title:"Instagram"}
 ]
 ---
+
+{links.map(function(link){
+    return <Link data={link}/>
+
+})}
