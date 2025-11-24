@@ -11,9 +11,14 @@ import Text from "@components/text.astro";
 
 <Layout title="Astro Starter">
 
-  <Container>
-    <Text text="Hi!" />
-    <LinkGroup/>
-  </Container>
-  
+    <div class="two-column">
+      <Container>
+        <img class="scaled-image" src="/src/assets/images/butt.png" alt="buttons" width="120" />
+        <Text/>
+      </Container>
+      
+      <aside class="side-column">
+        <LinkGroup/>
+      </aside>
+    </div>
 </Layout>

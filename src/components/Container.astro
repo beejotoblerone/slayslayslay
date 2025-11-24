@@ -4,6 +4,7 @@
 
 <div class="container">
   <slot />
+ 
 </div>
 
 <style>
@@ -11,16 +12,15 @@
   .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin: 0rem 1rem 0 0rem;
     gap: 0.5rem;
   }
 
   .container > :global(*) {
-    /* sets the default width on anything inside this container*/
-    /* note: you can still override this on an individual basis by setting its max-width */
-    max-width: calc(
-      min(100%, var(--size-page-width)) - 2 * var(--size-page-padding)
-    );
-    width: 100%;
+    /* sets the default width on anything inside this container */
+    /* Use the page width variable and subtract the horizontal padding */
+    max-width: calc(min(100%, var(--size-page-width)) - 2 * var(--size-page-padding));
+    
   }
 </style>

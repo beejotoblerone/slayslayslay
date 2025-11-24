@@ -9,8 +9,8 @@ import "@fontsource/karla";
   :root {
     --color-background: rgb(53, 8, 8);
     --color-text: rgb(240, 240, 240);
-    --color-accent: rgb(0, 200, 255);
-    --color-focus-ring: rgb(255, 0, 255);
+    --color-accent: rgb(255, 255, 255);
+    --color-focus-ring: rgb(120, 146, 97);
 
     --font-body: "Karla", sans-serif;
     --font-headings: "Karla", sans-serif;
@@ -18,7 +18,7 @@ import "@fontsource/karla";
     font-size: 18px;
 
     /* These sizes are used by the Container component to set up the page container */
-    --size-page-width: 800px;
+    --size-page-width: 1200px;
     --size-page-padding: 1rem;
   }
 
@@ -40,18 +40,86 @@ import "@fontsource/karla";
   /* Massive hello title used by components */
   .massive-hello {
     font-family: var(--font-headings);
-    font-size: clamp(56px, 14vw, 220px);
+    font-size: clamp(56px, 14vw, 120px);
     line-height: 0.9;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: -0.02em;
-    margin: 0.25rem 0 1rem 0;
+    margin: 0rem 0rem 0 0rem;
     color: var(--color-accent);
     text-shadow: 0 6px 30px rgba(0,0,0,0.6);
-    text-align: center;
+    text-align: left;
+    align-self: flex-start;
+    width: 100%;
+  }
+
+  .myname {
+    font-family: var(--font-headings);
+    font-size: clamp(56px, 14vw, 120px);
+    line-height: 0.9;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0rem 0rem 0 0rem;
+    color: var(--color-focus-ring);
+    text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    text-align: left;
+    align-self: flex-start;
+    width: 100%;
   }
 
   /* default focus ring styles */
   *:focus-visible {
     outline: 3px solid var(--color-focus-ring);
+  }
+
+  /* Small helper class to scale down images used in pages */
+  .scaled-image {
+    width: 700px;
+    max-width: 80%;
+    height: auto;
+    display: block;
+  }
+
+  /* Two-column layout for pages: main content + side column */
+  .two-column {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+   
+  }
+
+  .two-column > * {
+    box-sizing: border-box;
+  }
+
+  /* Main content should flex-grow; side column gets a fixed-ish width */
+  .two-column > .container {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .two-column .side-column {
+    flex: 0 0 320px;
+  }
+
+  /* Stack on small screens */
+  @media (max-width: 900px) {
+    .two-column {
+      flex-direction: column;
+      padding: 0;
+    }
+    .two-column .side-column {
+      flex: none;
+      width: 100%;
+    }
+  }
+
+  /* Nudge only the textual content inside the first (main) container slightly to the right */
+  .two-column > .container:first-child .massive-hello,
+  .two-column > .container:first-child .myname,
+  .two-column > .container:first-child .titletext {
+    margin-left: 3rem;
   }
 </style>

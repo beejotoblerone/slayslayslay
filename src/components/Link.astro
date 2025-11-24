@@ -1,5 +1,35 @@
 ---
-const {data}= Astro.props;
+const { data } = Astro.props;
 ---
 
-<a href={data.url}>{data.title}</a>
+<a class="link-button" href={data.url} target="_blank" rel="noopener noreferrer">
+	{data.img ? <img class="link-icon" src={data.img} alt={data.title} /> : null}
+	<span class="link-title">{data.title}</span>
+</a>
+
+<style>
+	.link-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.6rem 0.8rem;
+		border-radius: 8px;
+		text-decoration: none;
+		color: inherit;
+		
+	}
+
+	.link-icon {
+		width: 400px;
+		height: auto;
+		display: flex;
+	}
+
+	.link-title {
+		font-weight: 600;
+	}
+
+	.link-button:hover {
+		transform: translateY(-2px);
+	}
+</style>

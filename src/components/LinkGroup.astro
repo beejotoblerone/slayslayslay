@@ -1,14 +1,19 @@
 ---
+
 import Link from "./Link.astro";
 
 const links = [
-    {title:"Portfolio", url:"https://beejoa35.myportfolio.com/"},
-    {title:"Resume", url:"https://kristofflalicki.dev"},
-    {title:"Instagram"}
-]
+    { title: "Portfolio", url: "https://beejoa35.myportfolio.com/", img: "/src/assets/images/dollbottom.png" },
+    { title: "Resume", url: "https://kristofflalicki.dev", img: "/src/assets/images/dolltop.png" },
+    { title: "LinkedIn", url: "https://linkedin.com/", img: "/src/assets/images/card.png" },
+    { title: "Behance", url: "https://behance.net/", img: "/src/assets/images/yohand.png" }
+];
+
+
 ---
 
 {links.map(function(link){
     return <Link data={link}/>
-
 })}
+
+
