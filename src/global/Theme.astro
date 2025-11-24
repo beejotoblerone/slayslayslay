@@ -95,13 +95,16 @@ import "@fontsource/karla";
   }
 
   /* Main content should flex-grow; side column gets a fixed-ish width */
+  /* Make both columns exact halves (accounting for the 2rem gap) */
   .two-column > .container {
-    flex: 1 1 0;
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
     min-width: 0;
   }
 
   .two-column .side-column {
-    flex: 0 0 320px;
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
   }
 
   /* Stack on small screens */
@@ -116,10 +119,5 @@ import "@fontsource/karla";
     }
   }
 
-  /* Nudge only the textual content inside the first (main) container slightly to the right */
-  .two-column > .container:first-child .massive-hello,
-  .two-column > .container:first-child .myname,
-  .two-column > .container:first-child .titletext {
-    margin-left: 3rem;
-  }
+
 </style>
