@@ -1,21 +1,20 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import SampleComponent from "@components/SampleComponent.astro";
 import Container from "@components/Container.astro";
-import AstroLogo from "@assets/images/astro-logo-light-gradient.png";
-import { Content as SampleMarkdown } from "@content/sample-markdown.md";
+import butt from "../assets/images/butt.png";
+import jojo from "../assets/images/jojo.png";
 import { Image } from "astro:assets";
 import LinkGroup from "@components/LinkGroup.astro";
 import Text from "@components/text.astro";
 ---
 
-<Layout title="Astro Starter">
+<Layout title="Ava-Jo Barone">
 
     <div class="two-column">
       <Container>
-        <img class="scaled-image" src="/src/assets/images/butt.png" alt="buttons" width="120" />
+        <Image class="scaled-image" src={butt} alt="buttons" />
         <Text/>
-        <img src="/src/assets/images/jojo.png" class="mynamepic" alt="Ava-Jo Barone" />
+        <Image src={jojo} class="mynamepic" alt="Ava-Jo Barone" />
       </Container>
       
       <aside class="side-column">
