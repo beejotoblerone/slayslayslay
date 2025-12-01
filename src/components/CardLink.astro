@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import card from '../assets/images/card.png';
+---
+
+<a href="https://somesite.com" class="card-link">
+    <div class="card-wrap">
+        <Image class={"card-top"} src={card} alt="Card" width={270} />
+        
+    </div>
+</a>
+
+<style>
+    .card-link{
+        position:absolute;
+        right:630px;
+        top:50px;
+        display: inline-block;
+    }
+
+    .card-wrap{ position: relative; display:inline-block }
+
+    .card-top{
+        display: block;
+        position: relative;
+        z-index: 2;
+        ease: transform 0.9s;
+    }
+
+    /* Move the top image up on hover */
+    .card-link:hover .card-top,
+    .card-link:focus-within .card-top {
+        transform: rotatez(30deg);
+    }
+
+</style>

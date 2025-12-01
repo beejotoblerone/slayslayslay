@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import yohand from '../assets/images/yohand.png';
+import yodown from '../assets/images/yodown.png';
+---
+
+<a href="https://somesite.com" class="hand-link">
+    <Image class={"doll-bottom"} src={yohand} alt="Hand" width={270} />
+
+    <span class="doll-top-wrap">
+        <Image class={"doll-top"} src={yodown} alt="Doll Bottom" width={270} />
+    </span>
+</a>
+
+<style>
+    .hand-link{
+        position:absolute;
+        right:0px;
+        top:30px;
+    }
+
+    .doll-top{
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+        display: block;
+    }
+
+    .hand-link:hover .doll-top {
+        transform: translateY(-30px);
+    }
+
+    /* place the word "behance" behind the yodown image, hidden by default */
+    .doll-top-wrap{
+        position: relative;
+        display: inline-block;
+    }
+
+    .doll-top-wrap::before{
+        content: "behance";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.98);
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.95);
+        z-index: 2; /* bring above the image so it's visible */
+        pointer-events: none;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 180ms ease, transform 200ms ease;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
+    /* reveal the label on hover or keyboard focus */
+    .hand-link:hover .doll-top-wrap::before,
+    .hand-link:focus-within .doll-top-wrap::before {
+        opacity: 1;
+        /* move the label with the image so it stays centered over it */
+        transform: translate(-70%, -20%) translateY(-10px) scale(1);
+    }
+
+    /* ensure the image remains above the text */
+    .doll-top-wrap img,
+    .doll-top-wrap :global(img) {
+        position: relative;
+        z-index: 1;
+    }
+</style>

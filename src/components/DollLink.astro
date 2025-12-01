@@ -4,27 +4,72 @@ import DollBottom from '../assets/images/dollbottom.png';
 import DollTop from '../assets/images/dolltop.png';
 ---
 
-<a href="https://somesite.com">
-    <Image class={"doll-top"} src={DollTop} alt="Doll Top" width="200" />
-    <Image class={"doll-bottom"} src={DollBottom} alt="Doll Bottom" width="200"
+<a href="https://somesite.com" class="doll-link">
+    <div class="doll-wrap">
+        <Image class={"doll-top"} src={DollTop} alt="Doll Top" width={400} />
+        <div class="doll-bottom-wrap">
+            <Image class={"doll-bottom"} src={DollBottom} alt="Doll Bottom" width={400} />
+        </div>
+    </div>
 </a>
 
 <style>
-    a{
+    .doll-link{
         position:absolute;
-        right:250px;
+        right:420px;
         top:300px;
-        
+        display: inline-block;
     }
+
+    .doll-wrap{ position: relative; display:inline-block }
 
     .doll-top{
-                transition: transform 0.3s ease;
-
+        transition: transform 0.3s ease;
+        display: block;
+        position: relative;
+        z-index: 2;
     }
 
-    a:hover .doll-top {
-        transform: translateY(-10px);
+    .doll-bottom{ display:block; position: relative; z-index: 2 }
+
+    /* Move the top image up on hover (or when bottom hovered) */
+    .doll-link:hover .doll-top,
+    .doll-link:focus-within .doll-top {
+        transform: translateY(-50px);
     }
 
+    /* place the word "portfolio" above the dollbottom image, hidden by default */
+    .doll-bottom-wrap{
+        position: relative;
+        display: inline-block;
+    }
+
+    .doll-bottom-wrap::before{
+        content: "portfolio";
+        position: absolute;
+        left: 47%;
+        bottom: calc(90% + 0.6rem);
+        transform: translateX(-50%) translateY(0);
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: rgba(255,255,255,0.95);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        z-index: 3; /* above images when revealed */
+        pointer-events: none;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 180ms ease, transform 200ms ease;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+    }
+
+    /* Reveal when hovered or focused */
+    .doll-link:hover .doll-bottom-wrap::before,
+    .doll-link:focus-within .doll-bottom-wrap::before,
+    .doll-bottom-wrap:hover::before,
+    .doll-bottom-wrap:focus-within::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-6px);
+    }
 
 </style>

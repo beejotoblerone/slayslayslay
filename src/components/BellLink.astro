@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import dingdong from '../assets/images/dingdong.png';
+---
+
+<a href="https://somesite.com" class="bell-link">
+    <div class="bell-wrap">
+        <Image class={"bell-top"} src={dingdong} alt="Bell Top" width={300} />
+        
+    </div>
+</a>
+
+<style>
+    .bell-link{
+        position:absolute;
+        right:200px;
+        top:70px;
+        display: inline-block;
+    }
+
+    .bell-wrap{ position: relative; display:inline-block }
+
+    .bell-top{
+        transition: transform 0.3s ease;
+        display: block;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Move the top image up on hover */
+    .bell-link:hover .bell-top,
+    .bell-link:focus-within .bell-top {
+        transform: translateY(-30px) rotate(20deg);
+        
+
+</style>
