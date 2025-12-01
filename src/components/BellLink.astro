@@ -1,9 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import dingdong from '../assets/images/dingdong.png';
+import AvaJoBaroneResume from '../assets/images/Ava-Jo Barone Resume.pdf';
 ---
 
-<a href="https://somesite.com" class="bell-link">
+<a href={AvaJoBaroneResume} class="bell-link" >
     <div class="bell-wrap">
         <Image class={"bell-top"} src={dingdong} alt="Bell Top" width={300} />
         
@@ -31,6 +32,30 @@ import dingdong from '../assets/images/dingdong.png';
     .bell-link:hover .bell-top,
     .bell-link:focus-within .bell-top {
         transform: translateY(-30px) rotate(20deg);
-        
+    }
+
+    /* caption that appears under the bell on hover */
+    .bell-wrap::after{
+        content: "resume";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.95);
+       
+        border-radius: 0px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 160ms ease, transform 160ms ease;
+        z-index: 3;
+        white-space: nowrap;
+    }
+
+    .bell-link:hover .bell-wrap::after,
+    .bell-link:focus-within .bell-wrap::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+    }
 
 </style>

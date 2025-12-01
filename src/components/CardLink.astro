@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import card from '../assets/images/card.png';
 ---
 
-<a href="https://somesite.com" class="card-link">
+<a href="https://www.linkedin.com/in/ava-jo-barone-a5a444265" class="card-link">
     <div class="card-wrap">
         <Image class={"card-top"} src={card} alt="Card" width={270} />
         
@@ -13,8 +13,8 @@ import card from '../assets/images/card.png';
 <style>
     .card-link{
         position:absolute;
-        right:630px;
-        top:50px;
+        right:670px;
+        top:42px;
         display: inline-block;
     }
 
@@ -24,13 +24,38 @@ import card from '../assets/images/card.png';
         display: block;
         position: relative;
         z-index: 2;
-        ease: transform 0.9s;
+        transition: transform 0.9s ease;
     }
 
     /* Move the top image up on hover */
     .card-link:hover .card-top,
     .card-link:focus-within .card-top {
-        transform: rotatez(30deg);
+      transform:rotate3d(0, 1, 0.5, 3.142rad);
+    }
+
+    /* caption that appears above the card on hover */
+    .card-wrap::before{
+        content: "linkedin";
+        position: absolute;
+        left: 90%;
+        transform: translateX(-50%);
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.95);
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 160ms ease, transform 190ms ease;
+        z-index: 3;
+        white-space: nowrap;
+    }
+
+    .card-link:hover .card-wrap::before,
+    .card-link:focus-within .card-wrap::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
     }
 
 </style>
+
